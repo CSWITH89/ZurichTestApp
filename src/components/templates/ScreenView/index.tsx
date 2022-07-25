@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ScrollView, Platform, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const ScreenView = ({children}) => {
+const ScreenView = ({hasScroll, children}) => {
   const {bottom: bottomInset} = useSafeAreaInsets();
   const scrollContainerStyle = {
     paddingBottom:
@@ -10,12 +10,16 @@ const ScreenView = ({children}) => {
   };
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-        style={scrollContainerStyle}>
-        {children}
-      </ScrollView>
+      {hasScroll ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          style={scrollContainerStyle}>
+          {children}
+        </ScrollView>
+      ) : (
+        children
+      )}
     </View>
   );
 };
