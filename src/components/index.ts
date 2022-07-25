@@ -1,4 +1,4 @@
 import ProductCard from './ProductCard';
-import ProductCarousel from './ProductCarousel';
+import Spacer from './Spacer';
 
-export {ProductCard, ProductCarousel};
+export {ProductCard, Spacer};

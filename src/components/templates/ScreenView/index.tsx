@@ -2,7 +2,12 @@ import * as React from 'react';
 import {ScrollView, Platform, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const ScreenView = ({hasScroll, children}) => {
+type TScreenViewProps = {
+  hasScroll?: boolean;
+  children: React.ReactNode;
+};
+
+const ScreenView = ({hasScroll, children}: TScreenViewProps) => {
   const {bottom: bottomInset} = useSafeAreaInsets();
   const scrollContainerStyle = {
     paddingBottom:

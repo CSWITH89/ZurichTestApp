@@ -1,50 +1,12 @@
 import * as React from 'react';
-import {ActivityIndicator, Text, FlatList, View, Image} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
 import ScreenView from 'components/templates/ScreenView';
 import {getProductDataAPI} from 'contexts/api/endpoints';
-import {SCREEN_HEIGHT} from '../../constants/Layout';
-// import {ProductCard} from 'components';
+import {ProductCard} from 'components';
+import {TProduct} from '../../constants/globalTypes';
 
-// productData.map(row => {
-// return <Text>{`${row}`}</Text>;
-// return <ProductCard rowTitle={row.title} productList={row.items} />;
-// })}
-
-const renderProduct = item => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: 'column',
-        padding: 1,
-        borderColor: 'lightgrey',
-        borderWidth: 1,
-      }}>
-      <Image
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: SCREEN_HEIGHT * 0.3,
-        }}
-        source={{uri: item.images[0].thumb}}
-      />
-      <Text
-        style={{
-          fontWeight: '700',
-          fontSize: 16,
-        }}>
-        {`€ ${item.price}`}
-      </Text>
-      <Text
-        style={{
-          fontWeight: '600',
-          fontSize: 14,
-          color: 'grey',
-        }}>
-        {item.title}
-      </Text>
-    </View>
-  );
+const renderProduct = (item: TProduct) => {
+  return <ProductCard item={item} />;
 };
 
 const Home = () => {
@@ -68,9 +30,8 @@ const Home = () => {
         <FlatList
           data={productData}
           renderItem={({item}) => renderProduct(item)}
-          //Setting the number of column
           numColumns={2}
-          keyExtractor={(item, index) => index}
+          keyExtractor={index => index}
         />
       )}
 

@@ -10,12 +10,12 @@ const AppStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
+          name="ZurichMart"
           component={Home}
           options={{headerShadowVisible: false}}
         />
         <Stack.Screen
-          name="ProductDetails"
+          name="Product Details"
           component={ProductDetails}
           options={{headerShadowVisible: false}}
         />
